@@ -14,6 +14,7 @@
             'form': document.getElementById('form'),
             'app': document.getElementById('app'),
             'prev': document.getElementById('prev'),
+            'prevset': document.getElementById('prevset'),
             'headers': [...document.querySelectorAll(`[name="headers[]"]`)]
         },
         methods = {
@@ -126,6 +127,17 @@
                     methods.saveOptions();
                 }
             },
+            'setPresetIp': (ev) => {
+              ev.preventDefault();
+              if (ev.target.tagName !== 'A') {
+                return;
+              }
+              let newIp = ev.target.innerText.split(':')[1];
+              if (methods.checkIp(newIp)) {
+                el.ip.value = newIp;
+                methods.saveOptions();
+              }
+            },
             'getSettings': (cb) => {
                 browser.storage.sync.get(defaultSettings).then(cb);
             },
@@ -148,7 +160,7 @@
     document.addEventListener('DOMContentLoaded', methods.loadOptions);
     el.ip.addEventListener('keyup', methods.saveOptions);
     el.ip.addEventListener('blur', methods.saveOptions);
-    el.prev.addEventListener('click', methods.loadPreviousIp);
+    el.prevset.addEventListener('click', methods.setPresetIp);
     el.clear.addEventListener('click', methods.clearOptions);
     el.form.addEventListener('submit', methods.submitForm);
     el.headers.forEach(el => { el.addEventListener('change', methods.saveHeaders) });

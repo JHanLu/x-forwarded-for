@@ -118,6 +118,20 @@
             cursor: pointer;
         }
 
+        #prevset {
+          margin: 0;
+          padding: 0 0 0 1.5em;
+        }
+
+        #prevset li {
+          padding: 2px 0;
+        }
+
+        #prevset li a {
+          cursor: pointer;
+        }
+
+
         #header-settings {
             padding: 0;
             margin: 0;
@@ -151,8 +165,14 @@
             <input type="text" placeholder="127.0.0.1" id="ip" autofocus autocomplete="off">
             <small id="status"></small>
         </section>
-        <p>Recently used IPs:</p>
-        <ul id="prev"></ul>
+        <p>Prevset IPs:</p>
+        <ul id="prevset">
+          <li><a>HK:182.239.127.137</a></li>
+          <li><a>US:67.220.91.30</a></li>
+          <li><a>SG:155.69.203.4</a></li>
+          <li><a>AU:124.171.74.153</a></li>
+          <li><a>JP:133.242.187.207</a></li>
+        </ul>
         <p>Send the following headers:</p>
         <ul id="header-settings">
             <li><label for="x-forwarded-for"><input type="checkbox" name="headers[]" value="X-Forwarded-For" id="x-forwarded-for">X-Forwarded-For</label></li>
